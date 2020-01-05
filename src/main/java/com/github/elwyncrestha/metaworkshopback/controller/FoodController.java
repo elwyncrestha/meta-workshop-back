@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.elwyncrestha.metaworkshopback.mapper.FoodMapper;
 import com.github.elwyncrestha.metaworkshopback.model.entity.Food;
 import com.github.elwyncrestha.metaworkshopback.model.service.FoodService;
 
@@ -25,10 +26,15 @@ public class FoodController {
     static final String API = "v1/food";
 
     private final FoodService foodService;
+    private final FoodMapper foodMapper;
 
     @Autowired
-    public FoodController(FoodService foodService) {
+    public FoodController(
+        FoodService foodService,
+        FoodMapper foodMapper
+    ) {
         this.foodService = foodService;
+        this.foodMapper = foodMapper;
     }
 
     @PostMapping
@@ -51,5 +57,11 @@ public class FoodController {
     public ResponseEntity<?> delete(@PathVariable Long id) {
         foodService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/all/filtered")
+    public ResponseEntity<?> getAllFiltered() {
+        return new ResponseEntity<>(foodMapper.mapEntitiesToDtos(foodService.findAll()),
+            HttpStatus.OK);
     }
 }
