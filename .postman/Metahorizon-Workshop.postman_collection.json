@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c11d1f0d-be0d-4290-8679-b2a415f8de88",
+		"_postman_id": "ae0039a2-67a7-4b8d-8429-74f6e58b11d2",
 		"name": "Metahorizon-Workshop",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -102,6 +102,52 @@
 								"v1",
 								"food",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get One",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8086/v1/users/authenticated",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"v1",
+								"users",
+								"authenticated"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8086/v1/users/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"v1",
+								"users",
+								"all"
 							]
 						}
 					},
